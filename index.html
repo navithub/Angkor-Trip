@@ -1,142 +1,84 @@
 <!DOCTYPE html>
-<html lang="km">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cambodia</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambodia Neon UI</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="header">
-    <div class="menu-icon" id="menuToggle">&#9776;</div>
-    <div class="logo">
-      <img src="https://files.catbox.moe/v316dg.png" class="dragon" alt="Dragon" />
-      <h1>Cambodia</h1>
-    </div>
-    <div class="search-icon">&#128269;</div>
-  </header>
+    <canvas id="snow-canvas"></canvas>
+    
+    <!-- HOME SCREEN -->
+    <section id="home" class="screen active">
+        <header>
+            <img src="https://files.catbox.moe/v316dg.png" class="logo" alt="Cambodia Logo">
+            <div class="game-link"><a href="https://www.roblox.com/games/6902530754/Angkor-Trip" target="_blank">Play Game</a></div>
+            <div class="nav-buttons">
+                <button class="neon-btn" data-target="viewrank">BUY RANK</button>
+                <button class="neon-btn" data-target="help">HELP</button>
+                <button class="neon-btn" data-target="group">GROUP</button>
+            </div>
+        </header>
+        <h2 class="rainbow-text">STORE</h2>
+        <div class="cards">
+            <div class="card gradient-green">
+                <h3 class="rainbow-text">VIEW RANKS</h3>
+                <button class="neon-btn" data-target="viewrank">VIEW RANKS</button>
+            </div>
+            <div class="card gradient-blue">
+                <h3 class="rainbow-text">HELP <span style="font-size:12px;color:red;">NEW</span></h3>
+                <button class="neon-btn" data-target="help">HELP</button>
+            </div>
+            <div class="card gradient-purple">
+                <h3 class="rainbow-text">GROUP</h3>
+                <button class="neon-btn" data-target="group">GROUP</button>
+            </div>
+        </div>
+        <footer>
+            <p>JOIN NOW :</p>
+            <div class="social-icons">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+            </div>
+        </footer>
+    </section>
 
-  <!-- NAVIGATION -->
-  <nav class="nav-links">
-    <button class="nav-btn" data-screen="ranks">VIEW RANKS</button>
-    <button class="nav-btn" data-screen="help">HELP</button>
-    <button class="nav-btn" data-screen="group">GROUP</button>
-  </nav>
+    <!-- VIEW RANK SCREEN -->
+    <section id="viewrank" class="screen">
+        <h1 class="rainbow-text">Buy Rank</h1>
+        <select id="rank-select">
+            <option value="">Select Rank</option>
+            <option value="VIP RANK 5$">VIP RANK 5$</option>
+            <option value="SUPER RANK 8$">SUPER RANK 8$</option>
+            <option value="OWNER RANK 12$">OWNER RANK 12$</option>
+        </select>
+        <input type="text" id="username" placeholder="Enter Roblox Username">
+        <button class="neon-btn" id="send-rank">Send</button>
+        <button class="neon-btn" data-target="home">Go Back</button>
+    </section>
 
-  <!-- HOME -->
-  <section id="home" class="screen active">
-    <div class="game-link-box">
-      <a href="https://www.roblox.com/games/6902530754/Angkor-Trip" target="_blank">Visit Game</a>
-    </div>
-    <h2 class="store-title">STORE</h2>
-    <div class="cards">
-      <div class="card ranks">
-        <h3 class="rainbow-text big-text">VIEW RANKS</h3>
-        <button class="nav-btn" data-screen="ranks">VIEW RANKS</button>
-      </div>
-      <div class="card help">
-        <span class="badge">NEW</span>
-        <h3 class="rainbow-text big-text">HELP</h3>
-        <button class="nav-btn" data-screen="help">HELP</button>
-      </div>
-      <div class="card group">
-        <h3 class="rainbow-text big-text">GROUP</h3>
-        <button class="nav-btn" data-screen="group">GROUP</button>
-      </div>
-    </div>
-  </section>
+    <!-- HELP SCREEN -->
+    <section id="help" class="screen">
+        <h1 class="rainbow-text">សូមបំពេញបញ្ហារបស់អ្នកនៅទីនេះ</h1>
+        <textarea id="help-text" placeholder="REPORT - HELP - SUPPORT HERE"></textarea>
+        <input type="file" id="help-image">
+        <button class="neon-btn" id="send-help">Send</button>
+        <button class="neon-btn" data-target="home">Go Back</button>
+    </section>
 
-  <!-- RANKS SCREEN -->
-  <section id="ranks" class="screen">
-    <div class="banner">VIEW RANKS</div>
-    <h2 class="rainbow-text big-text">Buy Rank</h2>
+    <!-- GROUP SCREEN -->
+    <section id="group" class="screen">
+        <h1 class="rainbow-text">Join Discord Group Here</h1>
+        <button class="neon-btn" onclick="window.open('https://discord.gg/xPAjYmVQnW','_blank')">Join Group</button>
+        <button class="neon-btn" onclick="copyGroupLink()">Copy Link</button>
+        <button class="neon-btn" data-target="home">Go Back</button>
+    </section>
 
-    <label for="rankSelect">ជ្រើសរើស Rank:</label>
-    <select id="rankSelect" class="input-field">
-      <option value="">--ជ្រើសរើស Rank--</option>
-      <option value="VIP RANK 5$">VIP RANK 5$</option>
-      <option value="SUPER RANK 8$">SUPER RANK 8$</option>
-      <option value="OWNER RANK 12$">OWNER RANK 12$</option>
-    </select>
-    <p id="rankAlert" class="alert"></p>
-
-    <input
-      type="text"
-      id="robloxUsername"
-      placeholder="បញ្ចូល Username Roblox"
-      class="input-field"
-    />
-
-    <button id="sendToDiscord" class="btn-primary">Sent</button>
-    <div id="response"></div>
-  </section>
-
-  <!-- PAYMENT SCREEN -->
-  <section id="payment" class="screen">
-    <div class="banner">Go to Payment</div>
-    <img
-      src="https://files.catbox.moe/4ch43c.jpeg"
-      class="qr-image"
-      alt="Payment QR"
-    />
-    <p class="note">ស្កេន QR ដើម្បីបង់ប្រាក់</p>
-
-    <label for="discordContact">ដាក់ Link Discord ឬ Username:</label>
-    <input
-      type="text"
-      id="discordContact"
-      placeholder="Discord Link / Username"
-      class="input-field"
-    />
-    <label for="fileInput" class="file-label">ជ្រើសរើសរូប Screenshot</label>
-    <input type="file" id="fileInput" style="display: none" />
-    <button id="sendPayment" class="btn-primary">Send</button>
-
-    <button data-screen="home" class="nav-btn back-btn">Back to Home</button>
-  </section>
-
-  <!-- HELP SCREEN -->
-  <section id="help" class="screen">
-    <div class="banner">HELP</div>
-    <p>Coming Soon</p>
-  </section>
-
-  <!-- GROUP SCREEN -->
-  <section id="group" class="screen">
-    <div class="banner">GROUP</div>
-    <p>Coming Soon</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>JOIN NOW :</p>
-    <div class="social-icons">
-      <a href="#"><img src="icon-discord.png" alt="Discord" /></a>
-      <a href="#"><img src="icon-tiktok.png" alt="TikTok" /></a>
-      <a href="#"><img src="icon-youtube.png" alt="YouTube" /></a>
-      <a href="#"><img src="icon-facebook.png" alt="Facebook" /></a>
-      <a href="#"><img src="icon-telegram.png" alt="Telegram" /></a>
-    </div>
-  </footer>
-
-  <!-- SIDE MENU -->
-  <div class="side-menu" id="sideMenu">
-    <div class="close-icon" id="menuClose">&times;</div>
-    <button class="side-menu-btn" data-screen="ranks">VIEW RANKS</button>
-    <button class="side-menu-btn" data-screen="help">HELP</button>
-    <button class="side-menu-btn" data-screen="group">GROUP</button>
-  </div>
-
-  <!-- TUTORIAL MODAL -->
-  <div id="tutorialModal" class="modal">
-    <div class="modal-content">
-      <h2 id="tutorialTitle"></h2>
-      <ul id="tutorialSteps"></ul>
-      <button id="tutorialAgree" class="btn-primary">យល់ហើយ</button>
-    </div>
-  </div>
+    <audio id="bg-music" src="https://files.catbox.moe/vfvet2.mp3" autoplay loop></audio>
+    <script src="script.js"></script>
 </body>
 </html>
